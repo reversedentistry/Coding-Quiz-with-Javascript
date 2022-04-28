@@ -1,5 +1,7 @@
-var startBtn = document.querySelector("start"); 
-var questionContainer = document.querySelector("question-container");
+var startBtn = document.querySelector("#start"); 
+var questionContainer = document.querySelector("#question-container");
+var questionElement = document.querySelector("#question"); 
+var answerElement = document.querySelector("#answer-button"); 
 
 startBtn.addEventListener("click", startGame); 
 
