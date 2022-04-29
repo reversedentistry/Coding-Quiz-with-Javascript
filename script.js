@@ -30,7 +30,7 @@ function showQuestion(question) {
     questionElement.innerText = question.question; 
     question.answers.forEach(answer => {
         const btn = document.createElement("button"); 
-        btn.innerText = answer.text; 
+        btn.innerText = answer.answer; 
         btn.classList.add("answer-button") 
         if (answer.correct){
             btn.dataset.correct = answer.correct; 
