@@ -1,14 +1,15 @@
 var startBtn = document.querySelector("#start"); 
 var questionContainer = document.querySelector("#question-container");
 var questionElement = document.querySelector("#question"); 
-var answerElement = document.querySelector("#answer-button"); 
-var questionCounter = 0; 
+var answerElement = document.querySelector("#answerBtns"); 
+var questionCounter; 
 
 startBtn.addEventListener("click", startGame); 
 
 function startGame() {
     startBtn.setAttribute("style", "display: none;");
     questionContainer.setAttribute("style", "display: block"); 
+    questionCounter = 0; 
     nextQuestion();
 };
 
@@ -20,16 +21,27 @@ function nextQuestion() {
     // calls showQuestion takes in a question object
 
     questionCounter = 
-    showQuestion(questions[questionCounter])
+    showQuestion(questions[questionCounter++])
 };
 
 function showQuestion(question) {
     //logic to display question and answers
     //html question = "Commonly used data types do NOT include:"
     questionElement.innerText = question.question; 
+    question.answers.forEach(answer => {
+        const btn = document.createElement("button"); 
+        btn.innerText = answer.text; 
+        btn.classList.add("answer-button") 
+        if (answer.correct){
+            btn.dataset.correct = answer.correct; 
+        }
+        btn.addEventListener("click", pickAnswer); 
+        answerElement.appendChild(btn); 
+    })
+    }
 
+function pickAnswer(e){}
 
-}
 
 //on answer button click check to see if it is correct or not, then increment score. after checking increment questionCounter by 1
 // call nextQuestion
