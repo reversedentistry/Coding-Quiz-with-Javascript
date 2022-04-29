@@ -4,6 +4,9 @@ var questionElement = document.querySelector("#question");
 var answerElement = document.querySelector("#answerBtns"); 
 var questionCounter; 
 var quizScore; 
+var timeLeft; 
+
+const maxQuestions = 5
 
 startBtn.addEventListener("click", startGame); 
 
@@ -12,17 +15,25 @@ function startGame() {
     questionContainer.setAttribute("style", "display: block"); 
     questionCounter = 0; 
     quizScore = 0; 
+    timeLeft = 90; 
+    let timerInterval = setInterval(function() {
+        timeLeft--; 
+        if (timeLeft === 0){
+
+        }
+    })
     nextQuestion();
 };
 
 function nextQuestion() {
     // How do I move sequentially through my array? 
-    // set counter 
-    // questions++
-    
-    // calls showQuestion takes in a question object
+    // set counter, calls showQuestion takes in a question object
     reset(); 
-    questionCounter = showQuestion(questions[questionCounter++])
+    questionCounter++
+    showQuestion(questions[questionCounter]); 
+    // check if you've reached the end of the array to go to final page to prevent loop. final question should go to final page to enter initials and see final score 
+    
+    /* if questionCounter > maxQuestions end game and go to end game page*/
 };
 
 function reset() {
@@ -34,13 +45,13 @@ function reset() {
 function showQuestion(question) {
     //logic to display question and answers
     questionElement.innerText = question.question; 
-    question.answers.forEach(answer => {
+    question.answers.forEach(function populateAnswers(answer){
         const btn = document.createElement("button"); 
         btn.innerText = answer.answer; 
         btn.classList.add("answer-button") 
         if (answer.correct){
-            btn.dataset.correct = answer.correct; 
-        }
+             btn.dataset.correct = answer.correct; 
+         }
         btn.addEventListener("click", pickAnswer); 
         answerElement.appendChild(btn); 
     })
@@ -48,9 +59,29 @@ function showQuestion(question) {
 
 // when selecting an answer - moves to next question + gives some indication for whether it is right or wrong + adjust score 
 function pickAnswer(event){
-
+    const selectedBtn = event.target; 
+    const correctAnswer = selectedBtn.dataset.correct;   
+    Array.from(answerElement.children).forEach(button => {
+        setStatus(button, button.dataset.correct)
+    })
+    //if 
+    
+    setTimeout(nextQuestion, 500)
 }
 
+function setStatus(element, correct) {
+    clearStatus(element)
+    if (correct) {
+        element.classList.add("btn-correct")
+    } else {
+        element.classList.add("btn-incorrect")
+    }
+}
+
+function clearStatus(element) {
+    element.classList.remove("btn-correct"); 
+    element.classList.remove("btn-incorrect"); 
+}
 
 //on answer button click check to see if it is correct or not, then increment score. after checking increment questionCounter by 1
 // call nextQuestion
