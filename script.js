@@ -6,7 +6,9 @@ var questionCounter;
 var quizScore; 
 var timeLeft; 
 
-const maxQuestions = 5
+const maxQuestions = 5; 
+const points = 10; 
+const seconds = 10; 
 
 startBtn.addEventListener("click", startGame); 
 
@@ -64,18 +66,26 @@ function pickAnswer(event){
     Array.from(answerElement.children).forEach(button => {
         setStatus(button, button.dataset.correct)
     })
-    //if 
+    if (selectedBtn.dataset.correct) {
+        quizScore + points
+    } else {
+        timeLeft - seconds
+    }
+     
     
-    setTimeout(nextQuestion, 500)
+    setTimeout(nextQuestion, 700); 
 }
 
 function setStatus(element, correct) {
     clearStatus(element)
     if (correct) {
-        element.classList.add("btn-correct")
+        element.classList.add("btn-correct"); 
+        
     } else {
-        element.classList.add("btn-incorrect")
+        element.classList.add("btn-incorrect"); 
+        
     }
+    console.log(quizScore);
 }
 
 function clearStatus(element) {
