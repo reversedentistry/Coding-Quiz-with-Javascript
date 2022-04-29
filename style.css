@@ -1,6 +1,28 @@
+:root { 
+    --pink: rgb(235, 170, 181); 
+    --darkpink: rgb(119, 67, 76); 
+}
+
 * {
  box-sizing: border-box;
  padding: 0; 
  margin: 0; 
     
+}
+
+#question-container {
+    display: none; 
+}
+
+.answer-button {
+    background-color: var(--pink);
+    border: solid 1px var(--darkpink); 
+}
+
+.btn-correct {
+    background-color: rgb(172, 231, 172); 
+}
+
+.btn-incorrect {
+    background-color: rgb(238, 90, 90);
 }
