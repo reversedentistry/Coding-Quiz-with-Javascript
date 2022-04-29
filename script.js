@@ -2,6 +2,7 @@ var startBtn = document.querySelector("#start");
 var questionContainer = document.querySelector("#question-container");
 var questionElement = document.querySelector("#question"); 
 var answerElement = document.querySelector("#answer-button"); 
+var questionCounter = 0; 
 
 startBtn.addEventListener("click", startGame); 
 
@@ -13,9 +14,25 @@ function startGame() {
 
 function nextQuestion() {
     // How do I move sequentially through my array? 
-    questions++ 
+    // set counter 
+    // questions++
+    
+    // calls showQuestion takes in a question object
 
-}; 
+    questionCounter = 
+    showQuestion(questions[questionCounter])
+};
+
+function showQuestion(question) {
+    //logic to display question and answers
+    //html question = "Commonly used data types do NOT include:"
+    questionElement.innerText = question.question; 
+
+
+}
+
+//on answer button click check to see if it is correct or not, then increment score. after checking increment questionCounter by 1
+// call nextQuestion
 
 const questions = [
    { 
