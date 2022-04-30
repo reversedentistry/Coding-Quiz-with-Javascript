@@ -7,8 +7,6 @@ var quizScore;
 var timeLeft; 
 
 const maxQuestions = 5; 
-const points = 10; 
-const seconds = 10; 
 
 startBtn.addEventListener("click", startGame); 
 
@@ -34,6 +32,11 @@ function nextQuestion() {
     questionCounter++
     showQuestion(questions[questionCounter]); 
     // check if you've reached the end of the array to go to final page to prevent loop. final question should go to final page to enter initials and see final score 
+
+    if (questionCounter > maxQuestions) {
+        localStorage.setItem("finalscore", quizScore); 
+        return window.location.href = "./end.html"; 
+    }
     
     /* if questionCounter > maxQuestions end game and go to end game page*/
 };
