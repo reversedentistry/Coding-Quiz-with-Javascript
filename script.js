@@ -2,11 +2,12 @@ var startBtn = document.querySelector("#start");
 var questionContainer = document.querySelector("#question-container");
 var questionElement = document.querySelector("#question"); 
 var answerElement = document.querySelector("#answerBtns"); 
+var timerElement = document.querySelector("#timer"); 
 var questionCounter; 
 var quizScore; 
 var timeLeft; 
 
-const maxQuestions = 5; 
+const maxQuestions = 4; 
 
 startBtn.addEventListener("click", startGame); 
 
@@ -21,9 +22,10 @@ function startGame() {
         if (timeLeft === 0){
             clearInterval(timerInterval); 
             localStorage.setItem("finalscore", quizScore); 
-            return window.location.href = "./end.html";    
+            return window.location.assign("./end.html");    
         }
     }, 1000); 
+    timerElement.textContent = "Timer: " + timeLeft + " seconds"; 
     nextQuestion();
 };
 
@@ -32,13 +34,14 @@ function nextQuestion() {
     // set counter, calls showQuestion takes in a question object
     reset(); 
     questionCounter++
+     if (questionCounter > maxQuestions) {
+        localStorage.setItem("finalscore", quizScore); 
+        return window.location.assign("./end.html"); 
+    }
     showQuestion(questions[questionCounter]); 
     // check if you've reached the end of the array to go to final page to prevent loop. final question should go to final page to enter initials and see final score 
 
-    if (questionCounter > maxQuestions) {
-        localStorage.setItem("finalscore", quizScore); 
-        return window.location.href = "./end.html"; 
-    }
+   
     
     /* if questionCounter > maxQuestions end game and go to end game page*/
 };
