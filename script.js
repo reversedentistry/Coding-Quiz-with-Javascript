@@ -19,9 +19,11 @@ function startGame() {
     let timerInterval = setInterval(function() {
         timeLeft--; 
         if (timeLeft === 0){
-
+            clearInterval(timerInterval); 
+            localStorage.setItem("finalscore", quizScore); 
+            return window.location.href = "./end.html";    
         }
-    })
+    }, 1000); 
     nextQuestion();
 };
 
@@ -72,7 +74,7 @@ function pickAnswer(event){
     if (correctAnswer) {
         quizScore += 10; 
     } else {
-        timeLeft -= 10; 
+        timeLeft -= 5; 
     }
     console.log(quizScore); 
     
