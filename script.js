@@ -19,13 +19,14 @@ function startGame() {
     timeLeft = 90; 
     let timerInterval = setInterval(function() {
         timeLeft--; 
+        timerElement.textContent = "Timer: " + timeLeft + " second(s)";
         if (timeLeft === 0){
             clearInterval(timerInterval); 
             localStorage.setItem("finalscore", quizScore); 
             return window.location.assign("./end.html");    
         }
     }, 1000); 
-    timerElement.textContent = "Timer: " + timeLeft + " seconds"; 
+     
     nextQuestion();
 };
 
