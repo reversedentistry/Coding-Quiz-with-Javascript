@@ -66,12 +66,12 @@ function pickAnswer(event){
     Array.from(answerElement.children).forEach(button => {
         setStatus(button, button.dataset.correct)
     })
-    if (selectedBtn.dataset.correct) {
-        quizScore + points
+    if (correctAnswer) {
+        quizScore += 10; 
     } else {
-        timeLeft - seconds
+        timeLeft -= 10; 
     }
-     
+    console.log(quizScore); 
     
     setTimeout(nextQuestion, 700); 
 }
@@ -85,7 +85,7 @@ function setStatus(element, correct) {
         element.classList.add("btn-incorrect"); 
         
     }
-    console.log(quizScore);
+    
 }
 
 function clearStatus(element) {
