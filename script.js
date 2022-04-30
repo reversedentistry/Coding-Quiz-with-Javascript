@@ -24,7 +24,7 @@ function startGame() {
     timeLeft = 90; 
     let timerInterval = setInterval(function() {
         timeLeft--; 
-        timerElement.textContent = "Timer: " + timeLeft + " second(s)";
+        timerElement.textContent = "Timer: " + timeLeft + " second(s) left";
         if (timeLeft === 0){
             clearInterval(timerInterval); 
             localStorage.setItem("finalscore", quizScore); 
@@ -55,6 +55,7 @@ function reset() {
     }
 }
 
+// Checks within the giant question array to see which question to display. 
 function showQuestion(question) {
     questionElement.innerText = question.question; 
     question.answers.forEach(function populateAnswers(answer){
@@ -77,9 +78,9 @@ function pickAnswer(event){
         setStatus(button, button.dataset.correct)
     })
     if (correctAnswer) {
-        quizScore += 10; 
+        quizScore += 5; 
     } else {
-        timeLeft -= 5; 
+        timeLeft -= 10; 
     }
     console.log(quizScore); 
     
