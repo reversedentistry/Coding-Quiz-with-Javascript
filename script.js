@@ -1,16 +1,21 @@
+// Declare variables for elements needed
 var startBtn = document.querySelector("#start"); 
 var questionContainer = document.querySelector("#question-container");
 var questionElement = document.querySelector("#question"); 
 var answerElement = document.querySelector("#answerBtns"); 
 var timerElement = document.querySelector("#timer"); 
+
+// Declare empty variables used for functions later 
 var questionCounter; 
 var quizScore; 
 var timeLeft; 
 
 const maxQuestions = 4; 
 
+// Enables click event for start button 
 startBtn.addEventListener("click", startGame); 
 
+// Once start is clicked, start button disappears, timer begins, and question from array is chosen and populated as replacement
 function startGame() {
     startBtn.setAttribute("style", "display: none;");
     questionContainer.setAttribute("style", "display: block"); 
@@ -23,6 +28,7 @@ function startGame() {
         if (timeLeft === 0){
             clearInterval(timerInterval); 
             localStorage.setItem("finalscore", quizScore); 
+            // When the timer hits zero, the game ends and the page redirects to endgame page for submissions and score recording
             return window.location.assign("./end.html");    
         }
     }, 1000); 
@@ -30,23 +36,19 @@ function startGame() {
     nextQuestion();
 };
 
+// When next question is being populated, any possible previous question will disappear and be replaced. Question count will increase with each new question and acts as indication for which index to move to in array below. 
 function nextQuestion() {
-    // How do I move sequentially through my array? 
-    // set counter, calls showQuestion takes in a question object
     reset(); 
     questionCounter++
      if (questionCounter > maxQuestions) {
-        localStorage.setItem("finalscore", quizScore); 
+        localStorage.setItem("finalscore", quizScore);
+        // When the timer hits zero, the game ends and the page redirects to endgame page for submissions and score recording 
         return window.location.assign("./end.html"); 
     }
     showQuestion(questions[questionCounter]); 
-    // check if you've reached the end of the array to go to final page to prevent loop. final question should go to final page to enter initials and see final score 
-
-   
-    
-    /* if questionCounter > maxQuestions end game and go to end game page*/
 };
 
+// Checks to see if the container holding answer buttons has anything. If yes, those old buttons are deleted so new answers can be put in. 
 function reset() {
     while(answerElement.firstChild) {
         answerElement.removeChild(answerElement.firstChild)
@@ -54,7 +56,6 @@ function reset() {
 }
 
 function showQuestion(question) {
-    //logic to display question and answers
     questionElement.innerText = question.question; 
     question.answers.forEach(function populateAnswers(answer){
         const btn = document.createElement("button"); 
