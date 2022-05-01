@@ -6,7 +6,7 @@ var mostRecentScore = localStorage.getItem("finalscore");
 var highScores = JSON.parse(localStorage.getItem("highScores")) || []; 
 
 function init() {
-    finalScoreDisplay.textContent = "You scored " + mostRecentScore + " points!"
+    finalScoreDisplay.textContent = "You scored " + mostRecentScore + "/20 points!"
 }
 
 init(); 
@@ -15,7 +15,7 @@ playerName.addEventListener("keyup", function ensureEntry() {
     submitBtn.disabled = !playerName.value
 }); 
 
-function saveScore(event) {
+submitBtn.addEventListener("click", function saveScore(event) {
     event.preventDefault(); 
     var playerInfo = {
         score: mostRecentScore,
@@ -31,4 +31,6 @@ function saveScore(event) {
     highScores.splice(5); 
 
     localStorage.setItem("highScores", JSON.stringify(highScores)); 
-}
+    window.location.assign("./index.html"); 
+}); 
+
