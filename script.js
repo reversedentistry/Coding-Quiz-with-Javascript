@@ -87,6 +87,7 @@ function pickAnswer(event){
     setTimeout(nextQuestion, 700); 
 }
 
+//Checks to see whether the specified element--in the case above the buttons--are classified as "correct". If they are, set the correct answers to green. If wrong, sets them to red. 
 function setStatus(element, correct) {
     clearStatus(element)
     if (correct) {
@@ -98,15 +99,13 @@ function setStatus(element, correct) {
     }
     
 }
-
+// Ensures the colors for right and wrong answers to do not carry over to the next answer set 
 function clearStatus(element) {
     element.classList.remove("btn-correct"); 
     element.classList.remove("btn-incorrect"); 
 }
 
-//on answer button click check to see if it is correct or not, then increment score. after checking increment questionCounter by 1
-// call nextQuestion
-
+// Array containing questions
 const questions = [
    { 
     question: "Commonly used data types do NOT include:", 
