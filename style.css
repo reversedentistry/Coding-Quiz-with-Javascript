@@ -10,12 +10,13 @@
     
 }
 
+/* Main quiz styles */
 header {
     display: flex; 
     justify-content: space-between;
 }
 
-.container, .start-container { 
+.container, .start-container, .end-main { 
     display: flex; 
     justify-content: center;
     align-items: center;
@@ -32,15 +33,6 @@ header {
     display: none; 
 }
 
-/* #question-container {
-    display: none  
-} */
-
-/* .buttonlist { */
-    /* display: grid; */
-    /* flex-direction: column; */
-/* } */
-
 .answer-button {
     background-color: var(--pink);
     border: solid 1px var(--darkpink); 
@@ -56,4 +48,9 @@ header {
 .btn-incorrect {
     background-color: rgb(238, 90, 90);
     border: solid 1px black; 
+}
+
+/* End page styles */
+.end-main {
+    flex-direction: column;
 }
