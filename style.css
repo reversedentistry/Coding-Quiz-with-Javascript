@@ -15,6 +15,9 @@ header {
     justify-content: space-between;
 }
 
+button, input {
+    margin: 1rem; 
+}
 .container, .start-container, .end-main, .scores-main { 
     display: flex; 
     justify-content: center;
@@ -49,4 +52,7 @@ header {
     border: solid 1px black; 
 }
 
-
+/* Score page styles */
+#highscore-list {
+    list-style: none;
+}
