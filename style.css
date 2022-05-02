@@ -10,13 +10,38 @@
     
 }
 
-#question-container {
+header {
+    display: flex; 
+    justify-content: space-between;
+}
+
+.container { 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 100vw; 
+    height: 100vh; 
+     
+}
+
+.hide {
     display: none; 
 }
+
+/* #question-container {
+    display: none  
+} */
+
+/* .buttonlist { */
+    /* display: grid; */
+    /* flex-direction: column; */
+/* } */
 
 .answer-button {
     background-color: var(--pink);
     border: solid 1px var(--darkpink); 
+    display: block; 
+    margin: 5px 0; 
 }
 
 .btn-correct {
