@@ -10,13 +10,12 @@
     
 }
 
-/* Main quiz styles */
 header {
     display: flex; 
     justify-content: space-between;
 }
 
-.container, .start-container, .end-main { 
+.container, .start-container, .end-main, .scores-main { 
     display: flex; 
     justify-content: center;
     align-items: center;
@@ -25,7 +24,7 @@ header {
      
 }
 
-.start-container {
+.start-container, .end-main, .scores-main {
     flex-direction: column;
 }
 
@@ -50,7 +49,4 @@ header {
     border: solid 1px black; 
 }
 
-/* End page styles */
-.end-main {
-    flex-direction: column;
-}
+
