@@ -1,5 +1,6 @@
 // Declare variables for elements needed
-var startBtn = document.querySelector("#start"); 
+var startBtn = document.querySelector("#start");
+var startContainer = document.querySelector(".start-container") 
 var questionContainer = document.querySelector("#question-container");
 var questionElement = document.querySelector("#question"); 
 var answerElement = document.querySelector("#answerBtns"); 
@@ -18,8 +19,9 @@ startBtn.addEventListener("click", startGame);
 
 // Once start is clicked, start button disappears, timer begins, and question from array is chosen and populated as replacement
 function startGame() {
-    startBtn.setAttribute("style", "display: none;");
-    title.setAttribute("style", "display: none;");
+    // startBtn.setAttribute("style", "display: none;");
+    // title.setAttribute("style", "display: none;");
+    startContainer.classList.add("hide");
     questionContainer.classList.remove("hide"); 
     questionCounter = 0; 
     quizScore = 0; 
