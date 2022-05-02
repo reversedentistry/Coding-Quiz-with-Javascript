@@ -22,7 +22,7 @@ function startGame() {
     questionContainer.classList.remove("hide"); 
     questionCounter = 0; 
     quizScore = 0; 
-    timeLeft = 90; 
+    timeLeft = 60; 
     let timerInterval = setInterval(function() {
         timeLeft--; 
         timerElement.textContent = "Timer: " + timeLeft + " second(s) left";
