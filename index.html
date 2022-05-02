@@ -8,12 +8,16 @@
         <title>How Well Do You Know Web Dev?</title>
     </head>
     <body>
-        <h2>Coding Quiz Challenge</h2>
-        <h3 id="timer"></h3>
-        <button id="start">Start Quiz</button>
-        <div class="container">
-            <div id="question-container">
-                <div id="question">Q</div>
+        <header>
+          <h3 id="timer"></h3> 
+          <a href="./highscores.html">View High Scores</a>  
+        </header>
+        <main>
+          <h2>Coding Quiz Challenge</h2>
+          <button id="start">Start Quiz</button>
+          <div class="container">
+            <div id="question-container" class="hide">
+                <div id="question"></div>
                 <div id="answerBtns" class="buttonlist">
                     <button class="answer-button">1</button>
                     <button class="answer-button">2</button>
@@ -21,8 +25,8 @@
                     <button class="answer-button">4</button>
                 </div>    
             </div>
-        </div>
-        <a href="./highscores.html">High Scores</a>
+          </div>
+        </main>
         <script src="script.js"></script>
     </body>
 </html>
